@@ -1,0 +1,33 @@
+.grid-rows-0fr {
+    grid-template-rows: 0fr;
+}
+
+.grid-rows-1fr {
+    grid-template-rows: 1fr;
+}
+
+/* GLOBAL VIDEO CONTROL */
+video {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* default artist video size */
+#artist-video {
+    width: 100%;
+    max-width: 4000px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ONLY DION */
+#artist-video.dion {
+    max-width: 3000px;
+
+}
+
+#artist-video.jyrock{
+    max-width: 200px;
+
+}
