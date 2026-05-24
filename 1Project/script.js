@@ -1,101 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>imPFLanguage</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        /* Custom styles to handle smooth accordion transitions */
-        .grid-rows-0fr { grid-template-rows: 0fr; }
-        .grid-rows-1fr { grid-template-rows: 1fr; }
- 
-    </style>
-</head>
-<body class="selection:bg-[#E63946] font-sans antialiased m-0 p-0">
-
-    <!-- Main App Container -->
-    <div id="app" class="min-h-screen bg-[#88786f] text-white flex flex-col transition-colors duration-700">
-        
-        <!-- Header -->
-        <header id="header" class="fixed top-0 left-0 w-full p-6 z-50 transition-all duration-300 flex items-center justify-between text-black">
-            <button onclick="switchTab('projects')" class="text-[13px] font-medium tracking-tight hover:opacity-50 transition-opacity">
-                imPFLanguage
-            </button>
-            <nav class="flex items-center gap-4">
-                <button onclick="switchTab('artist')" class="p-1 hover:opacity-50"><span class="font-bold text-xs">A</span></button>
-                <button onclick="switchTab('clothing')" class="p-1 hover:opacity-50"><i data-lucide="shirt" class="w-4 h-4"></i></button>
-                <button onclick="switchTab('projects')" class="p-1 hover:opacity-50"><i data-lucide="eye" class="w-4 h-4"></i></button>
-                <button onclick="switchTab('about')" class="p-1 hover:opacity-50"><i data-lucide="info" class="w-4 h-4"></i></button>
-                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-1 hover:opacity-50"><i data-lucide="chevron-up" class="w-4 h-4"></i></button>
-            </nav>
-        </header>
-
-        <!-- Projects Tab -->
-        <main id="tab-projects" class="flex-1 flex flex-col items-center w-full px-6 pt-32 pb-24 text-black">
-            <div id="projects-container" class="w-full max-w-[600px] flex flex-col">
-                <!-- Projects will be injected here via JS -->
-            </div>
-        </main>
-
-        <!-- Clothing Tab -->
-        <main id="tab-clothing" class="hidden flex-1 flex flex-col items-center w-full px-6 pt-32 pb-24 text-black">
-            <div id="clothing-container" class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <!-- Clothing will be injected here via JS -->
-            </div>
-        </main>
-
-        <!-- Artist Tab -->
-        <main id="tab-artist" class="hidden fixed inset-0 w-full h-full flex flex-col items-center justify-center bg-black">
-            <div id="artist-bg" class="absolute inset-0 bg-neutral-800 transition-colors duration-1000 flex items-center justify-center overflow-hidden">
-                <video id="artist-video" class="absolute w-full h-full object-cover opacity-50" playsinline autoplay muted loop></video>
-            </div>
-            
-            <button onclick="prevSlide()" class="absolute left-4 md:left-12 z-20 p-4 text-white/40 hover:text-white transition-colors">
-                <i data-lucide="chevron-left" class="w-12 h-12 stroke-1"></i>
-            </button>
-
-            <div class="z-10 text-center px-6 pointer-events-none">
-                <h2 id="artist-title" class="text-6xl md:text-8xl font-black tracking-tighter mb-4 text-white drop-shadow-lg"></h2>
-                <p id="artist-desc" class="text-sm uppercase tracking-[0.4em] text-white/80 drop-shadow-md"></p>
-            </div>
-
-            <button onclick="nextSlide()" class="absolute right-4 md:right-12 z-20 p-4 text-white/40 hover:text-white transition-colors">
-                <i data-lucide="chevron-right" class="w-12 h-12 stroke-1"></i>
-            </button>
-        </main>
-
-        <!-- About Tab -->
-        <main id="tab-about" class="hidden flex-1 flex items-center justify-center w-full px-6 pt-32 pb-24 text-black">
-            <div class="grid grid-cols-2 gap-4 items-center justify-items-center max-w-lg w-full">
-                <!-- Letter Tiles -->
-                <div id="slides-wrapper" class="relative w-full h-screen flex items-center justify-center">
-    
-    <video class="slide dion w-full aspect-video object-cover" src="Dion.mp4"></video>
-
-    <video class="slide hidden w-full max-w-2xl aspect-video object-cover" src="Jayrock.mp4"></video>
-
-    <video class="slide hidden w-full max-w-2xl aspect-video object-cover" src="P.mp4"></video>
-
-</div>rows-0fr transition-all duration-500 w-full"><div class="overflow-hidden mt-1"><div class="w-full aspect-square bg-black/80"></div></div></div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <script>
-        // Data Models
+  // Data Models
         const PROJECTS = [
             { id: 'IMP-001', title: 'The weight of a thousand silent conversations we never actually had.', date: '2026.05.22', video: 'videos/IMP-001.mp4' },
             { id: 'IMP-002', title: 'Finding the frequency where the hum of the world finally stops.', date: '2026.05.22', video: 'videos/IMP-002.mp4' },
             { id: 'IMP-003', title: 'The physical sensation of leaving a place that was never really home.', date: '2026.05.22', video: 'videos/IMP-003.mp4' },
             { id: 'IMP-004', title: 'What remains after the light fades and the memory begins to distort.', date: '2026.05.22', video: 'videos/IMP-004.mp4' },
-            { id: 'IMP-005', title: 'A quiet insistence that there is still more road left to travel.', date: '2026.05.22', video: 'vdeos/IMP-005.mp4' },
-            { id: 'IMP-006', title: 'Counting the fragments of a broken clock at three in the morning.', date: '2026.05.22', video: '/videos/IMP-006.mp4' },
+            { id: 'IMP-005', title: 'A quiet insistence that there is still more road left to travel.', date: '2026.05.22', video: 'videos/IMP-005.mp4' },
+            { id: 'IMP-006', title: 'Counting the fragments of a broken clock at three in the morning.', date: '2026.05.22', video: 'videos/IMP-006.mp4' },
             { id: 'IMP-007', title: 'The way color bleeds through the edges of a monochromatic frame.', date: '2026.05.22', video: 'videos/IMP-007.mp4' },
-            { id: 'IMP-008', title: 'Listening to the resonance of an empty room reflecting your own thoughts.', date: '2026.05.22', video: '/IMP-008.mp4' },
-            { id: 'IMP-009', title: 'Tracing the impossible patterns found within fractured layers of history.', date: '2026.05.22', video: '/IMP-009.mp4' }
+            { id: 'IMP-008', title: 'Listening to the resonance of an empty room reflecting your own thoughts.', date: '2026.05.22', video: 'videos/IMP-008.mp4' },
+            { id: 'IMP-009', title: 'Tracing the impossible patterns found within fractured layers of history.', date: '2026.05.22', video: 'videos/IMP-009.mp4' }
         ];
 
         const CLOTHING_PIECES = [
@@ -108,12 +21,12 @@
         ];
 
         const ART_SLIDES = [
-            { title: "Dion", desc: "Watch music video", bg: "bg-neutral-800", video: "videos/Dion.mp4" },
-            { title: "Jayrock", desc: "Listen to Move On", bg: "bg-stone-900", video: "videos/Jayrock.mp4" },
+            { title: "Dion", desc: "The Art of listening", bg: "bg-neutral-800", video: "videos/Dion.mp4" },
+            { title: "Jayrock", desc: "A Remedy For Love Is language", bg: "bg-stone-900", video: "videos/Jayrock.mp4" },
             { title: "P.", desc: "Love yours and stay down", bg: "bg-zinc-900", video: "videos/P.mp4" },
-            { title: "Stay Down", desc: "Watch music video", bg: "bg-slate-900", video: "videos/StayDown.mp4" },
+            { title: "", desc: "On My Side Music Video", bg: "bg-slate-900", video: "videos/StayDown.mp4" },
             { title: "Love Yours", desc: "Listen now", bg: "bg-stone-800", video: "videos/LoveYours.mp4" },
-            { title: "Move On", desc: "Listen to Move On by Jay Rock", bg: "bg-neutral-900", video: "/videos/MoveOn.mp4" }
+            { title: "Family", desc: "22", bg: "bg-neutral-900", video: "videos/Family.mp4" }
         ];
 
         // State variables
@@ -331,71 +244,74 @@
         }
 
         // --- Artist Slideshow Logic ---
-        function updateArtistSlide() {
-            const slide = ART_SLIDES[slideIndex];
-            const bgElement = document.getElementById('artist-bg');
-            const titleElement = document.getElementById('artist-title');
-            const descElement = document.getElementById('artist-desc');
-            const videoElement = document.getElementById('artist-video');
+      function updateArtistSlide() {
+    const slide = ART_SLIDES[slideIndex];
+    const bgElement = document.getElementById('artist-bg');
+    const titleElement = document.getElementById('artist-title');
+    const descElement = document.getElementById('artist-desc');
+    const videoElement = document.getElementById('artist-video');
 
-            // Remove old bg class, add new
-            bgElement.className = `absolute inset-0 ${slide.bg} transition-colors duration-1000 flex items-center justify-center overflow-hidden`;
-            titleElement.innerText = slide.title;
-            descElement.innerText = slide.desc;
-            videoElement.src = slide.video;
-        }
+    // Remove old bg class, add new
+    bgElement.className = `absolute inset-0 ${slide.bg} transition-colors duration-1000 flex items-center justify-center overflow-hidden`;
 
-        function nextSlide() {
-            slideIndex = (slideIndex + 1) % ART_SLIDES.length;
-            updateArtistSlide();
-            resetSlideShow();
-        }
+    titleElement.innerText = slide.title;
+    descElement.innerText = slide.desc;
+    videoElement.src = slide.video;
 
-        function prevSlide() {
-            slideIndex = (slideIndex - 1 + ART_SLIDES.length) % ART_SLIDES.length;
-            updateArtistSlide();
-            resetSlideShow();
-        }
+   // IMPORTANT: control via CSS class only
+    videoElement.classList.remove("dion");
+    if (slide.title === "Dion") {
+        videoElement.classList.add("dion");
+    }
+}
 
-        function startSlideShow() {
-            if (slideInterval) clearInterval(slideInterval);
-            slideInterval = setInterval(() => {
-                slideIndex = (slideIndex + 1) % ART_SLIDES.length;
-                updateArtistSlide();
-            }, 6000);
-        }
+function nextSlide() {
+    slideIndex = (slideIndex + 1) % ART_SLIDES.length;
+    updateArtistSlide();
+    resetSlideShow();
+}
 
-        function stopSlideShow() {
-            if (slideInterval) {
-                clearInterval(slideInterval);
-                slideInterval = null;
-            }
-        }
+function prevSlide() {
+    slideIndex = (slideIndex - 1 + ART_SLIDES.length) % ART_SLIDES.length;
+    updateArtistSlide();
+    resetSlideShow();
+}
 
-        function resetSlideShow() {
-            if (activeTab === 'artist') {
-                startSlideShow();
-            }
-        }
+function startSlideShow() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(() => {
+        slideIndex = (slideIndex + 1) % ART_SLIDES.length;
+        updateArtistSlide();
+    }, 6000);
+}
 
-        // --- About Tiles Logic ---
-        function toggleTile(btn) {
-            const letter = btn;
-            const grid = btn.nextElementSibling;
-            
-            if (grid.classList.contains('grid-rows-0fr')) {
-                grid.classList.replace('grid-rows-0fr', 'grid-rows-1fr');
-                letter.classList.remove('font-normal', 'text-black/50');
-                letter.classList.add('font-bold', 'text-black');
-            } else {
-                grid.classList.replace('grid-rows-1fr', 'grid-rows-0fr');
-                letter.classList.add('font-normal', 'text-black/50');
-                letter.classList.remove('font-bold', 'text-black');
-            }
-        }
+function stopSlideShow() {
+    if (slideInterval) {
+        clearInterval(slideInterval);
+        slideInterval = null;
+    }
+}
 
+function resetSlideShow() {
+    if (activeTab === 'artist') {
+        startSlideShow();
+    }
+}
+
+// --- About Tiles Logic ---
+function toggleTile(btn) {
+    const letter = btn;
+    const grid = btn.nextElementSibling;
+    
+    if (grid.classList.contains('grid-rows-0fr')) {
+        grid.classList.replace('grid-rows-0fr', 'grid-rows-1fr');
+        letter.classList.remove('font-normal', 'text-black/50');
+        letter.classList.add('font-bold', 'text-black');
+    } else {
+        grid.classList.replace('grid-rows-1fr', 'grid-rows-0fr');
+        letter.classList.add('font-normal', 'text-black/50');
+        letter.classList.remove('font-bold', 'text-black');
+    }
+}
         // Boot
         window.onload = init;
-    </script>
-</body>
-</html>
